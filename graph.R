@@ -7,6 +7,7 @@ library(ggthemes)
 library(rsconnect)
 
 
+
 #importing
 s <- read_csv("s.csv")
 #cleaning the data
@@ -63,8 +64,6 @@ totalByYear3<- ggplot(totalByYear1,mapping = aes(year,value))+
                       labels=c("Other Crimes  ","Total Carnapping  ",
                               "Total Shooting  ","Total Robbery  ","Total Crime"))
 
-
-
 perRegion2 <- ggplot(perRegion,mapping = 
                        aes(police_regional_office,
                       sumPerRegion,fill=police_regional_office))+
@@ -82,4 +81,3 @@ perRegion2 <- ggplot(perRegion,mapping =
   theme(plot.title = element_text(hjust = 0.5,face="bold",size=15))+
   theme(axis.title=element_text(face="bold",size=15))+
   theme(text=element_text(size=15))
-

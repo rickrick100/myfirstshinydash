@@ -11,6 +11,10 @@ shinyServer(function(input, output) {
        perRegion2
      }
    })
+   #tables
    output$table <- renderDataTable(s)
+   output$table1 <- renderTable(perRegion)
+   output$table2 <- renderTable(totalByYear)
+   
 
 })
