@@ -12,7 +12,7 @@ dashboardPage(
   ),
   dashboardBody(
     tabItems(
-      # First tab content
+      #2nd tab
       tabItem(tabName = "dashboard",
               fluidRow(
                 lol<-box(width = 9,title = "Chart", status = "primary", solidHeader = TRUE,
@@ -25,13 +25,19 @@ dashboardPage(
               )
       ),
       
-      # Second tab content
+      #2nd tab
       tabItem(tabName = "widgets",
               div(style = 'overflow-x: scroll', DT::dataTableOutput('table')),br(),
               fluidRow(
                 box(
                   title = "Download", status = "warning", solidHeader = TRUE,
                   a("https://data.gov.ph/dataset/recapitulation-incidents-involving-motorcycle-riding-tandem-criminals")
+                ),
+                box(
+                  title = "Github", status = "primary", solidHeader = TRUE,
+                  p("Source Code link"),
+                  a("https://github.com/rickrick100/myfirstshinydash")
+                  
                 )
                     
               )
