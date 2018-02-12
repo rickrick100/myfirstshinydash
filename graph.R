@@ -1,15 +1,15 @@
 library(readr)
 library(tidyr)
 library(dplyr)
-library(lubridate)
 library(ggplot2)
 library(reshape2)
 library(ggthemes)
 library(rsconnect)
 
 
-
+#importing
 s <- read_csv("s.csv")
+#cleaning the data
 s$shooting_incidents_total[s$shooting_incidents_total=="-"] <- 0
 s$robbery_total[s$robbery_total=="-"] <- 0
 s$carnapping_total[s$carnapping_total=="-"] <- 0
@@ -28,8 +28,16 @@ totalByYear <- s %>%
             total_Crimes = sum(as.numeric(total_number_of_incidents))
             )
 
+perRegion <- s %>%
+  select(police_regional_office,total_number_of_incidents)%>%
+  filter(total_number_of_incidents>=0)%>%
+  group_by(police_regional_office)%>%
+  summarise(sumPerRegion= sum(as.numeric(total_number_of_incidents)))%>%
+  arrange(sumPerRegion)
+
 totalByYear1 <- melt(totalByYear,id.var="year")
 
+#plotting
 totalByYear2<- ggplot(totalByYear1,mapping = aes(year,value,fill=variable))+
   geom_histogram(stat="identity")+
   facet_grid(~variable)+
@@ -55,12 +63,7 @@ totalByYear3<- ggplot(totalByYear1,mapping = aes(year,value))+
                       labels=c("Other Crimes  ","Total Carnapping  ",
                               "Total Shooting  ","Total Robbery  ","Total Crime"))
 
-perRegion <- s %>%
-  select(police_regional_office,total_number_of_incidents)%>%
-  filter(total_number_of_incidents>=0)%>%
-  group_by(police_regional_office)%>%
-  summarise(sumPerRegion= sum(as.numeric(total_number_of_incidents)))%>%
-  arrange(sumPerRegion)
+
 
 perRegion2 <- ggplot(perRegion,mapping = 
                        aes(police_regional_office,

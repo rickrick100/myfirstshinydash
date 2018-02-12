@@ -30,7 +30,7 @@ dashboardPage(
               div(style = 'overflow-x: scroll', DT::dataTableOutput('table')),br(),
               fluidRow(
                 box(
-                  title = "Download", status = "warning", solidHeader = TRUE,
+                  title = "Link to Dataset", status = "warning", solidHeader = TRUE,
                   a("https://data.gov.ph/dataset/recapitulation-incidents-involving-motorcycle-riding-tandem-criminals")
                 ),
                 box(
