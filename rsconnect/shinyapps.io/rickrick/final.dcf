@@ -1,0 +1,13 @@
+name: final
+title: final
+username:
+account: rickrick
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 290107
+bundleId: 1244890
+url: https://rickrick.shinyapps.io/final/
+when: 1519823865.57074
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: .RData|graph.R
