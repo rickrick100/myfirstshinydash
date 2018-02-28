@@ -1,20 +1,27 @@
-library(shinythemes)
 library(shiny)
-source("graph.R")
+library(plotly)
+
+source("Global.R")
 shinyServer(function(input, output) {
-   output$s <- renderPlot({
-     if(input$instate == "Facet of Crimes") {
-       totalByYear2
-     } else if (input$instate == "Group Bar Chart")  {
-       totalByYear3
+   output$s <- renderPlotly({
+     if(input$instate == "Per Region") {
+       firstPlot
+     } else if (input$instate == "Group Bar Chart"){
+       secondPlot
+     } else if (input$instate == "Suspects and Victims") {
+       thirdPlot
+     } else if (input$instate == "Shooting Incident") {
+       fourthPlot1
+     } else if (input$instate == "Robbery Incident") {
+       fourthPlot2
+     } else if (input$instate == "Carnapping Incident") {
+       fourthPlot3
+     } else if (input$instate == "Other Crimes") {
+       fourthPlot4
      } else {
-       perRegion2
+       fifthPlot
      }
    })
    #tables
    output$table <- renderDataTable(s)
-   output$table1 <- renderTable(perRegion)
-   output$table2 <- renderTable(totalByYear)
-   
-
 })
